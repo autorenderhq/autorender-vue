@@ -1,0 +1,103 @@
+{
+  "name": "@autorender/vue",
+  "version": "0.3.2",
+  "description": "Autorender SDK for Vue — file upload widget and ARImage / ViewTag image transformations.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "browser": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./viewtag": {
+      "import": {
+        "types": "./dist/viewtag.d.ts",
+        "browser": "./dist/viewtag.js",
+        "default": "./dist/viewtag.js"
+      },
+      "require": {
+        "types": "./dist/viewtag.d.cts",
+        "default": "./dist/viewtag.cjs"
+      }
+    },
+    "./viewtag/*": "./dist/viewtag/*",
+    "./package.json": "./package.json",
+    "./styles": {
+      "default": "./dist/styles.css"
+    },
+    "./dist/styles.css": "./dist/styles.css",
+    "./vite": {
+      "types": "./dist/vite-config.d.ts",
+      "browser": "./dist/vite-config.js",
+      "import": "./dist/vite-config.js",
+      "default": "./dist/vite-config.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "autorender sdk",
+    "autorender",
+    "sdk",
+    "viewtag",
+    "image",
+    "upload",
+    "vue"
+  ],
+  "author": "Autorender",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css",
+    "dist/*.css"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@autorender/js": "^0.3.3"
+  },
+  "peerDependencies": {
+    "vite": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+    "vue": "^3.0.0 || ^4.0.0",
+    "video.js": "^8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    },
+    "video.js": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "video.js": "^8.23.4",
+    "vite": "^7.3.2",
+    "vue": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autorenderhq/autorender-vue.git"
+  },
+  "homepage": "https://github.com/autorenderhq/autorender-vue#readme",
+  "bugs": {
+    "url": "https://github.com/autorenderhq/autorender-vue/issues"
+  }
+}
