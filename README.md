@@ -166,7 +166,7 @@ const uploader = useAutorenderUploader({
 
 ```vue
 <script setup lang="ts">
-import { useAutoRenderProvider } from '@autorender/vue';
+import { useAutoRenderProvider } from '@autorender/vue/viewtag';
 
 useAutoRenderProvider({
   baseUrl: 'https://assets.autorender.io',
@@ -192,7 +192,7 @@ useAutoRenderProvider({
 </template>
 
 <script setup lang="ts">
-import { ARImage } from '@autorender/vue';
+import { ARImage } from '@autorender/vue/viewtag';
 </script>
 ```
 
@@ -211,11 +211,54 @@ import { ARImage } from '@autorender/vue';
 </template>
 
 <script setup lang="ts">
-import { ARVideo } from '@autorender/vue';
+import { ARVideo } from '@autorender/vue/viewtag';
 </script>
 ```
 
 Supports MP4, HLS (`.m3u8`), and DASH (`.mpd`) sources.
+
+### Common video transformations
+
+Some transforms produce an image (thumbnail, GIF) — use `<ARImage>` for those instead of `<ARVideo>`.
+
+```vue
+<!-- Thumbnail frame — use ARImage, not ARVideo -->
+<ARImage
+  src="docs/skateboarding.mp4"
+  :width="320"
+  :height="220"
+  alt="Thumbnail"
+  :transformations="{ thumb_ar: true }"
+/>
+
+<!-- Animated GIF — use ARImage -->
+<ARImage
+  src="docs/skateboarding.mp4"
+  :width="320"
+  :height="220"
+  alt="GIF preview"
+  :transformations="{ f: 'gif' }"
+/>
+
+<!-- Trim a clip (2s – 8s) -->
+<ARVideo
+  src="docs/skateboarding.mp4"
+  :width="720"
+  :height="405"
+  :controls="true"
+  :transformations="{ so: 2, eo: 8 }"
+/>
+
+<!-- Pad to 16:9 with white background -->
+<ARVideo
+  src="docs/skateboarding.mp4"
+  :width="720"
+  :height="405"
+  :controls="true"
+  :transformations="{ ar: '16:9', cm_pad_resize: true, bg: 'white' }"
+/>
+```
+
 
 ### Use AR Instance Directly
 
@@ -226,7 +269,7 @@ Supports MP4, HLS (`.m3u8`), and DASH (`.mpd`) sources.
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAutoRender } from '@autorender/vue';
+import { useAutoRender } from '@autorender/vue/viewtag';
 
 const AR = useAutoRender();
 
@@ -311,4 +354,4 @@ Composable to inject the AR instance from parent provider.
 
 ## Documentation
 
-See the [full documentation](https://autorender.mintlify.app) for complete API reference.
+See the [full documentation](https://autorender.io/docs) for complete API reference.

@@ -12,8 +12,10 @@ const props = withDefaults(defineProps<{
   defaults?: AutoRenderProviderOptions['defaults'];
   deviceBreakpoints?: number[];
   imageBreakpoints?: number[];
+  enableDPR?: boolean;
 }>(), {
-  baseUrl: 'https://assets.autorender.io'
+  baseUrl: 'https://assets.autorender.io',
+  enableDPR: true,
 });
 
 useAutoRenderProvider({
@@ -21,7 +23,8 @@ useAutoRenderProvider({
   workspace: props.workspace,
   defaults: props.defaults,
   deviceBreakpoints: props.deviceBreakpoints,
-  imageBreakpoints: props.imageBreakpoints
+  imageBreakpoints: props.imageBreakpoints,
+  enableDPR: props.enableDPR,
 });
 </script>
 
